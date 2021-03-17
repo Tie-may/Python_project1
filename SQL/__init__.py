@@ -1,2 +1,2 @@
-from .import ConnectSQL
-from .import SqlConfig
+from . import ConnectSQL
+from . import SqlConfig

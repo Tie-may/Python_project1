@@ -36,5 +36,5 @@ class novel():
 
         return pd.DataFrame({'name':names,'url':urls})
 
-novel=novel()
-print(novel.get_data())
+# novel=novel()
+# print(novel.get_data())

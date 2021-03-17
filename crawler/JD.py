@@ -12,7 +12,7 @@ class JD():
         self.driver.get('https://www.jd.com/')
 
 
-    def get_goods(self,search_obj):
+    def get_data(self,search_obj):
         # 二。定位商品，抓取数据
         # 1.分析网页当前口罩的分页列表，所有口罩的商品都展现在<li>标签中，这些不同分类的口罩商品的<li>标签的属性class="gl-item"都是一样的，所以我们去定位商品，选class属性去定位
         # 3.定位输入关键字的搜索框，通过id来选定 id ='key'

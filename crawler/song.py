@@ -76,6 +76,6 @@ class Music():
 
 
 
-# 主程序
-if __name__ == "__main__":
-    print(Music('许嵩').get_data())
+# # 主程序
+# if __name__ == "__main__":
+#     print(Music('许嵩').get_data())

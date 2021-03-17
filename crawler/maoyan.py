@@ -41,6 +41,6 @@ class maoyan():
         # button.click()
         # time.sleep(1)
         # get_movies(driver)
-my=maoyan()
-print(my.get_data())
+# my=maoyan()
+# print(my.get_data())
 
