@@ -26,10 +26,11 @@ class Database():
         result = self.cur.fetchone()
         return result
 
-    def CreateTable(self, ExecuteStr):
+    def CreateTable(self, ExecuteStr,table_name):
         # 创建数据表
         try:
             # create_sqli = "CREATE TABLE IF NOT EXISTS hello(carinfor char(20),school int,weater char(20),class int)"
+            # self.cur.execute('DROP TABLE %s'%table_name)
             self.cur.execute(ExecuteStr)
         except Exception as e:
             print("创建表失败:", e)
@@ -41,7 +42,8 @@ class Database():
         # index：索引关闭 if_exists: replace 表存在则删除再写入  fail:什么都不干
         # DataSet类型必须为pd类型
         engine = create_engine(
-            'mysql+pymysql://root:zxc123@localhost/mysql?charset=utf8')
+            # 'mysql+pymysql://root:zxc123@localhost/%s?charset=utf8'%(sql_password))
+            'mysql+pymysql://%s:%s@%s/%s?charset=utf8' % (sql_user,sql_password,sql_host,sql_database))
         DataSet.to_sql(TableName, engine, index=False, if_exists='append')
 
     def Login(self, username, password):
@@ -75,3 +77,27 @@ class Database():
             self.cur.execute("INSERT INTO User (username,password) VALUE ('%s','%s')" % (username, password))
             print("成功注册")
             return True
+
+    def UploadData(self,crawl_data,table_name):
+        demo = crawl_data.iloc[2].values
+        colum_name = crawl_data.columns.values
+        sql_str = 'CREATE TABLE %s(' % table_name
+        for i in range(len(demo)):
+            crawl_name = colum_name[i]
+            crawl_value = demo[i]
+            if isinstance(crawl_value, int):
+                sql_str = sql_str + '%s INT' % colum_name[i]
+            elif isinstance(crawl_value, float):
+                sql_str = sql_str + '%s FLOAT' % colum_name[i]
+            elif isinstance(crawl_value, str):
+                sql_str = sql_str + '%s VARCHAR(2000)' % colum_name[i]
+            sql_str = sql_str + ','
+        sql_str = sql_str[:-1] + ')'
+        self.CreateTable(sql_str, table_name)
+        self.ToSql(crawl_data,table_name)
+
+    def DownloadData(self,table_name):
+        sql_str='SELECT * FROM %s'%table_name
+        self.cur.execute(sql_str)
+        down_data=self.cur.fetchall()
+        return down_data
