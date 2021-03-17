@@ -7,6 +7,7 @@ import os
 from selenium.webdriver.common.keys import Keys
 import time
 import pandas as pd
+movie_name=[]
 movie_crew = []
 movie_class = []
 movie_rate = []
@@ -28,9 +29,10 @@ class DouBan():
                 'window.scrollTo(0, document.body.scrollHeight)')
             time.sleep(1.5)
         movies = self.driver.find_elements_by_class_name('movie-content')
+
         for movie in movies:
-            movie_name = movie.find_element_by_class_name(
-                "movie-name").find_element_by_tag_name("a").text
+            movie_name.append(movie.find_element_by_class_name(
+                "movie-name").find_element_by_tag_name("a").text)
             # movie_crew = movie.find_element_by_class_name("movie-crew").text
             try:
                 movie_crew.append(
@@ -51,11 +53,15 @@ class DouBan():
             rating_num.append(
                 movie.find_element_by_class_name("rating_num").text)
 
-        CrawlData = {'Name': movie_name,
-                     'Crew': movie_crew,
-                     'Class': movie_class,
-                     'Rate': movie_rate,
-                     'RateNum': rating_num
-                     }
+        # CrawlData = pd.DataFrame(movie_name,movie_crew,movie_class,movie_rate,rating_num)
+        # CrawlData.columns=['movie_name','movie_crew','movie_class','movie_rate','rating_num']
+        print(len(movie_name))
+        CrawlData = pd.DataFrame({'movie_name':movie_name,
+                                  'movie_crew':movie_crew,
+                                  'movie_class': movie_class,
+                                  'movie_rate':movie_rate,
+                                 "rating_num":rating_num})
+        self.driver.close()
 
         return CrawlData
+
