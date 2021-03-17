@@ -9,10 +9,13 @@
 </head> 
 <body style="background: url('../img/img.png')">
 
+<!--标题开始-->
 <div class="d-flex font-weight-bold m-5 px-5" style="font-size: 45px">
     爬，都可以爬
 </div>
-<!--登陆菜单-->
+<!--标题结束-->
+
+<!--登陆菜单开始-->
 <div class="container-fluid">
     <div class="row" style="height: 360px;">
         <div class="col-1 col-md-3"></div>
@@ -31,6 +34,10 @@
                     <div class="w-50" style="margin: 0 auto">
                         <button type="submit" class="btn btn-primary btn-block">登&nbsp;&nbsp;陆</button>
                     </div>
+                    <div class="mt-4 d-flex" style="font-size: 14px;">
+                        <a href="#" class="text-primary" data-toggle="modal" data-target="#myModal_password">修改密码</a>
+                        <a href="#" class="text-primary ml-auto" data-toggle="modal" data-target="#myModal_register">还未有账号，点我注册</a>
+                    </div>
 
                 </form>
             </div>
@@ -38,5 +45,65 @@
         <div class="col-1 col-md-3"></div>
     </div>
 </div>
+<!--登陆菜单结束-->
+
+<!--修改密码开始-->
+<div class="modal fade" id="myModal_password">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">新密码</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <input class="form-control" type="text" placeholder="请输入密码">
+            </div>
+
+            <!-- 模态框底部 -->
+<!--            data-dismiss="modal"-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--修改密码结束-->
+
+<!--注册开始-->
+<div class="modal fade" id="myModal_register">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">注册</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="username">用户名:</label>
+                        <input type="text" class="form-control" id="new_username" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码:</label>
+                        <input type="password" class="form-control" id="new_password" placeholder="请输入密码">
+                    </div>
+                </form>
+            </div>
+
+            <!-- 模态框底部 -->
+            <!--            data-dismiss="modal"-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--注册结束-->
 </body>
 </html>
