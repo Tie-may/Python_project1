@@ -4,6 +4,7 @@ import pymysql
 import pandas as pd
 from sqlalchemy import create_engine
 import sqlalchemy
+from .SqlConfig import *
 
 
 class Database():
@@ -11,9 +12,9 @@ class Database():
         self.conn = pymysql.connect(
             host='localhost',
             user='root',
-            password='zxc123',
+            password=sql_password,
             charset='utf8mb4',
-            database='mysql'
+            database=sql_database
         )
         # 创建游标对象
         self.cur = self.conn.cursor()
