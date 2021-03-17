@@ -1,5 +1,6 @@
-from SQL import *
 # 数据库名称
+from SQL import *
+
 DName = 'hello'
 mysql = ConnectSQL.Database()
 CrawlData = DouBan.DouBan()

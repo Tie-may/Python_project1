@@ -10,8 +10,8 @@ from .SqlConfig import *
 class Database():
     def __init__(self):
         self.conn = pymysql.connect(
-            host='localhost',
-            user='root',
+            host=sql_host,
+            user=sql_user,
             password=sql_password,
             charset='utf8mb4',
             database=sql_database
