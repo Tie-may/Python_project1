@@ -7,7 +7,7 @@
     <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
 </head> 
-<body style="background: url('../img/img.png')">
+<body style="background: url('../imgs/img.png')">
 
 <!--标题开始-->
 <div class="d-flex font-weight-bold m-5 px-5" style="font-size: 45px">
@@ -59,7 +59,20 @@
 
             <!-- 模态框主体 -->
             <div class="modal-body">
-                <input class="form-control" type="text" placeholder="请输入密码">
+                <form>
+                    <div class="form-group">
+                        <label for="username">用户名:</label>
+                        <input type="text" class="form-control" id="old_username" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">旧密码:</label>
+                        <input type="password" class="form-control" id="old_password" placeholder="请输入旧密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">新密码:</label>
+                        <input type="password" class="form-control" id="modified_password" placeholder="请输入新密码">
+                    </div>
+                </form>
             </div>
 
             <!-- 模态框底部 -->
