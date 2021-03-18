@@ -45,7 +45,7 @@ class login:
 
     # 从前端页面上发送得数据，来接收得方法，接受得信息与前端页面输入框内容一样
     def POST(self):
-
+        flag=False
         loginUser = web.input()
         print(loginUser)
         # print("用户名：", loginUser.username, ",密码:", loginUser.password)
@@ -59,6 +59,7 @@ class login:
                 print("修改成功")
             else:
                 print("修改失败")
+                return render.login(flag)
         else:
             if data_base.Login(loginUser.username,loginUser.password):
                 print("登录成功")
@@ -66,6 +67,7 @@ class login:
                 pass
             else :
                 print("登录失败")
+                return render.login(flag)
         pass
     pass
 
