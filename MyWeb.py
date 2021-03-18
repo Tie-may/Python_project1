@@ -55,7 +55,10 @@ class login:
             print("注册")
             data_base.Register(loginUser.new_username,loginUser.new_password)
         elif loginUser.submit=='修改':
-            print("修改")
+            if data_base.Modify(loginUser.old_username,loginUser.old_password,loginUser.modified_password):
+                print("修改成功")
+            else:
+                print("修改失败")
         else:
             if data_base.Login(loginUser.username,loginUser.password):
                 print("登录成功")
@@ -63,22 +66,9 @@ class login:
                 pass
             else :
                 print("登录失败")
-
-        # 有用户，直接success
-        # if(b):
-        #
-        #     return render.getCrawler(loginUser)
-        #     pass
-        #
-        # else:
-        #
-        #     return render.error()
-        #     pass
         pass
     pass
 
-# 2.用户数据管理
-    # 2.1 用户表数据得显示
 class home_page:
 
     def GET(self):
