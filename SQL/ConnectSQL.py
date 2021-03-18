@@ -78,6 +78,21 @@ class Database():
             print("成功注册")
             return True
 
+    def Modify(self,username,oldpassword,newpassword):
+        SqlStr = "SELECT * FROM user WHERE username = '%s'"%username
+        demo=self.GetSql(SqlStr)
+        if demo:
+            if demo[0]==oldpassword:
+                self.cur.execute("UPDATE user SET password = '%s' WHERE username = '%s'")%(newpassword,username)
+                return True
+            else:
+                print("用户名错误")
+                return False
+        else:
+            print("未找到用户名")
+            return False
+
+
     def UploadData(self,crawl_data,table_name):
         demo = crawl_data.iloc[2].values
         colum_name = crawl_data.columns.values

@@ -13,7 +13,8 @@ from SQL import *
 render = web.template.render("html")
 urls = (
     "/login","login",
-    "/home_page","home_page"
+    "/home_page","home_page",
+    "/douban.html","douban"
     # # login对应下面的类login。  "/login" 指的是跳转页面，用户表管理
     # "/login", "login",
     # "/showUser", "showUser",
@@ -47,15 +48,21 @@ class login:
 
         loginUser = web.input()
         print(loginUser)
-        print("用户名：", loginUser.username, ",密码:", loginUser.password)
-
+        # print("用户名：", loginUser.username, ",密码:", loginUser.password)
+        print(loginUser.keys())
         data_base = ConnectSQL.Database()
-        if data_base.Login(loginUser.username,loginUser.password):
-            print("登录成功")
-            return render.home_page()
-            pass
-        else :
-            print("登录失败")
+        if loginUser.submit=='注册':
+            print("注册")
+            data_base.Register(loginUser.new_username,loginUser.new_password)
+        elif loginUser.submit=='修改':
+            print("修改")
+        else:
+            if data_base.Login(loginUser.username,loginUser.password):
+                print("登录成功")
+                return render.home_page()
+                pass
+            else :
+                print("登录失败")
 
         # 有用户，直接success
         # if(b):
@@ -81,6 +88,10 @@ class home_page:
         pass
     pass
 
+class douban:
+    def GET(self):
+        return render.douban()
+        pass
 # 2.2跳转到新增页面
 # class toAddUser:
 #
