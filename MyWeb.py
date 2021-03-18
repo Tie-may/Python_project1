@@ -45,7 +45,7 @@ class login:
 
     # 从前端页面上发送得数据，来接收得方法，接受得信息与前端页面输入框内容一样
     def POST(self):
-
+        flag=False
         loginUser = web.input()
         print(loginUser)
         # print("用户名：", loginUser.username, ",密码:", loginUser.password)
@@ -55,7 +55,11 @@ class login:
             print("注册")
             data_base.Register(loginUser.new_username,loginUser.new_password)
         elif loginUser.submit=='修改':
-            print("修改")
+            if data_base.Modify(loginUser.old_username,loginUser.old_password,loginUser.modified_password):
+                print("修改成功")
+            else:
+                print("修改失败")
+                return render.login(flag)
         else:
             if data_base.Login(loginUser.username,loginUser.password):
                 print("登录成功")
@@ -63,22 +67,10 @@ class login:
                 pass
             else :
                 print("登录失败")
-
-        # 有用户，直接success
-        # if(b):
-        #
-        #     return render.getCrawler(loginUser)
-        #     pass
-        #
-        # else:
-        #
-        #     return render.error()
-        #     pass
+                return render.login(flag)
         pass
     pass
 
-# 2.用户数据管理
-    # 2.1 用户表数据得显示
 class home_page:
 
     def GET(self):

@@ -86,7 +86,7 @@ class Database():
                 self.cur.execute("UPDATE user SET password = '%s' WHERE username = '%s'")%(newpassword,username)
                 return True
             else:
-                print("用户名错误")
+                print("密码错误")
                 return False
         else:
             print("未找到用户名")
