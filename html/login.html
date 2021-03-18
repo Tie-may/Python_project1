@@ -76,7 +76,7 @@
                         <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
                     </div>
                     <div class="w-50" style="margin: 0 auto">
-                        <input type="submit" id="submit" name="submit" class="btn btn-primary btn-block">
+                        <input type="submit" id="submit" name="submit" class="btn btn-primary btn-block" value="submit">
                     </div>
                     <div class="mt-4 d-flex" style="font-size: 14px;">
                         <a href="#" class="text-primary" data-toggle="modal" data-target="#myModal_password">修改密码</a>
@@ -103,26 +103,21 @@
 
             <!-- 模态框主体 -->
             <div class="modal-body">
-                <form>
+                <form method="post" action="login">
                     <div class="form-group">
                         <label for="username">用户名:</label>
-                        <input type="text" class="form-control" id="old_username" placeholder="请输入用户名">
+                        <input type="text" class="form-control" id="old_username" name="old_username" placeholder="请输入用户名">
                     </div>
                     <div class="form-group">
                         <label for="password">旧密码:</label>
-                        <input type="password" class="form-control" id="old_password" placeholder="请输入旧密码">
+                        <input type="password" class="form-control" id="old_password" name="old_password" placeholder="请输入旧密码">
                     </div>
                     <div class="form-group">
                         <label for="password">新密码:</label>
-                        <input type="submit" class="form-control" id="modified_password" placeholder="请输入新密码">
+                        <input type="password" class="form-control" id="modified_password" name="modified_password" placeholder="请输入新密码">
                     </div>
+                    <input type="submit" id="btn_modify" name="btn_modify" value="btn_modify" class="btn btn-primary btn-block">
                 </form>
-            </div>
-
-            <!-- 模态框底部 -->
-            <!--data-dismiss="modal"-->
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary btn-block">
             </div>
         </div>
     </div>
@@ -141,22 +136,17 @@
 
             <!-- 模态框主体 -->
             <div class="modal-body">
-                <form>
+                <form method="post" action="login">
                     <div class="form-group">
                         <label for="username">用户名:</label>
-                        <input type="text" class="form-control" id="new_username" placeholder="请输入用户名">
+                        <input type="text" class="form-control" id="new_username" name="new_username" placeholder="请输入用户名">
                     </div>
                     <div class="form-group">
                         <label for="password">密码:</label>
-                        <input type="password" class="form-control" id="new_password" placeholder="请输入密码">
+                        <input type="password" class="form-control" id="new_password" name="new_password" placeholder="请输入密码">
                     </div>
+                    <input type="submit" id="register" name="register" value="register" class="btn btn-primary btn-block">
                 </form>
-            </div>
-
-            <!-- 模态框底部 -->
-            <!-- data-dismiss="modal"-->
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary btn-block">
             </div>
         </div>
     </div>
