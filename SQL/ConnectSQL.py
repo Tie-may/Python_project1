@@ -18,8 +18,8 @@ class Database():
         )
         # 创建游标对象
         self.cur = self.conn.cursor()
-        self.cur.execute("DROP TABLE User")
-        self.cur.execute("CREATE TABLE IF NOT EXISTS User(username char(20),password char(20))")
+        # self.cur.execute("DROP TABLE User")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS user(username char(20),password char(20))")
 
     def GetSql(self, SqlStr):
         self.cur.execute(SqlStr)
@@ -30,7 +30,7 @@ class Database():
         # 创建数据表
         try:
             # create_sqli = "CREATE TABLE IF NOT EXISTS hello(carinfor char(20),school int,weater char(20),class int)"
-            # self.cur.execute('DROP TABLE %s'%table_name)
+            self.cur.execute('DROP TABLE IF EXISTS %s'%table_name)
             self.cur.execute(ExecuteStr)
         except Exception as e:
             print("创建表失败:", e)

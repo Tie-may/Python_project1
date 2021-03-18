@@ -1,3 +1,2 @@
-from .import ConnectSQL
-from . import DouBan
-demo = [ConnectSQL, DouBan]
+from . import ConnectSQL
+from . import SqlConfig

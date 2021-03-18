@@ -7,11 +7,7 @@ import os
 from selenium.webdriver.common.keys import Keys
 import time
 import pandas as pd
-movie_name=[]
-movie_crew = []
-movie_class = []
-movie_rate = []
-rating_num = []
+
 
 
 class DouBan():
@@ -21,6 +17,11 @@ class DouBan():
 
     def GetData(self):
         # 实现抓取
+        movie_name = []
+        movie_crew = []
+        movie_class = []
+        movie_rate = []
+        rating_num = []
         self.driver.find_element_by_link_text('排行榜').click()
         self.driver.find_element_by_link_text('动画').click()
         sleep(1)
