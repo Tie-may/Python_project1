@@ -14,7 +14,9 @@ render = web.template.render("html")
 urls = (
     "/login","login",
     "/home_page","home_page",
-    "/douban.html","douban"
+    "/douban.html","douban",
+    "/jd.html",'jd',
+    "/novel.html","nv"
     # # login对应下面的类login。  "/login" 指的是跳转页面，用户表管理
     # "/login", "login",
     # "/showUser", "showUser",
@@ -38,9 +40,9 @@ class login:
 
     # 注意此处得GET要全大写和底下POST一样
     def GET(self):
-
+        flag = False
         # 向服务器发起请求，是否存在login，存在即返回
-        return render.login()
+        return render.login(flag)
         pass
 
     # 从前端页面上发送得数据，来接收得方法，接受得信息与前端页面输入框内容一样
@@ -74,8 +76,6 @@ class login:
 class home_page:
 
     def GET(self):
-
-
         return render.showUser()
         pass
     pass
@@ -83,6 +83,15 @@ class home_page:
 class douban:
     def GET(self):
         return render.douban()
+        pass
+class nv:
+    def GET(self):
+        return render.nv()
+        pass
+
+class jd:
+    def GET(self):
+        return render.jd()
         pass
 # 2.2跳转到新增页面
 # class toAddUser:
