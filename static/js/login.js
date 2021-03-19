@@ -4,7 +4,10 @@ $(function () {
     $('#submit').click(function (e) {
         isSuccess = $('body').attr("data-flag");
         if (isSuccess === "False") {
-            if(isPrevent)e.preventDefault();
+            if(isPrevent){
+                e.preventDefault();
+                $("#submit").addClass("disabled");
+            }
             $('#error_psw01').html(
                 "<svg class='icon' aria-hidden='true'>" +
                 "<use xlink:href='#icon-chahao'></use>" +
@@ -17,7 +20,10 @@ $(function () {
     $('#btn_modify').click(function (e) {
         isSuccess = $('body').attr("data-flag");
         if (isSuccess === "False") {
-            if(isPrevent)e.preventDefault();
+            if(isPrevent){
+                e.preventDefault();
+                $("#btn_modify").addClass('disabled');
+            }
             $('#error_psw02').html(
                 "<svg class='icon' aria-hidden='true'>" +
                 "<use xlink:href='#icon-chahao'></use>" +
@@ -29,5 +35,7 @@ $(function () {
 
     $(".entering").focus(function (){
         isPrevent = false;
+        $('#submit').removeClass('disabled');
+        $('#btn_modify').removeClass('disabled');
     });
 })
