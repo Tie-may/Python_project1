@@ -2,7 +2,7 @@ $def with (data)
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>小说</title>
+    <title>音乐</title>
     <style type="text/css">
         .icon {
             width: 1em;
@@ -49,10 +49,10 @@ $def with (data)
                     其他网站
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" target="_blank" href="jd.html">京东</a>
+                    <a class="dropdown-item" target="_blank" href="jd.html">购物</a>
                     <a class="dropdown-item" target="_blank" href="douban.html">豆瓣</a>
                     <a class="dropdown-item" target="_blank" href="maoyan.html">猫眼</a>
-                    <a class="dropdown-item" target="_blank" href="music.html">音乐</a>
+                    <a class="dropdown-item" target="_blank" href="novel.html">小说</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -80,32 +80,38 @@ $def with (data)
 <header class="mt-3">
     <div class="container">
         <div class="row">
-            <div class="col text-center" style="font-size: 45px;">
+            <div class="col text-center font-weight-bold" style="font-size: 40px;">
                 <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-shu"></use>
+                    <use xlink:href="#icon-yinle"></use>
                 </svg>
-                <span style="color:#34CA9D">热门小说排行</span>
+                <span style="color: #325FD3">QQ音乐爬取</span>
             </div>
         </div>
     </div>
 </header>
 <!--头部结束-->
 
-<!--爬取按钮开始-->
+<!--搜索框开始-->
 <section class="mt-3">
     <div class="container">
         <div class="row">
-            <div class="col text-center">
-                <div class="btn-group">
-                    <input type="submit" class="btn btn-success rounded-0" name="submit" value="开始爬取">
-                    <input type="submit" id="show" class="btn btn-danger" name="submit" value="展示结果">
-                    <input type="submit" class="btn btn-primary rounded-0" name="submit" value="分析结果">
-                </div>
+            <div class="col-0 col-md-3"></div>
+            <div class="col-12 col-md-6 align-middle">
+                <form method="post" class="form-inline">
+                    <input class="form-control rounded-0 flex-grow-1" name="search" value="search" type="text"
+                           placeholder="Search">
+                    <div class="btn-group">
+                        <input type="submit" class="btn btn-success rounded-0" name="submit" value="开始爬取">
+                        <input type="submit" id="show" class="btn btn-danger" name="submit" value="展示结果">
+                        <input type="submit" class="btn btn-primary rounded-0" name="submit" value="分析结果">
+                    </div>
+                </form>
             </div>
+            <div class="col-0 col-md-3"></div>
         </div>
     </div>
 </section>
-<!--爬取按钮结束-->
+<!--搜索框结束-->
 
 <!--爬虫展示开始-->
 <!--<section>-->
@@ -128,6 +134,5 @@ $def with (data)
 <!--    </div>-->
 <!--</section>-->
 <!--爬虫展示结束-->
-
 </body>
 </html>
