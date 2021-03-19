@@ -17,7 +17,9 @@ urls = (
     "/home_page","home_page",
     "/douban.html","douban",
     "/jd.html",'jd',
-    "/novel.html","nv"
+    "/maoyan.html","maoyan",
+    "/music.html",'music',
+    "/novel.html","novel"
     # # login对应下面的类login。  "/login" 指的是跳转页面，用户表管理
     # "/login", "login",
     # "/showUser", "showUser",
@@ -84,10 +86,46 @@ class douban:
     def GET(self):
         return render.douban()
         pass
-class nv:
+
+    def POST(self):
+        table_name = 'db'
+        data = []
+        input = web.input()
+        print(input)
+        if (input.submit == "开始爬取"):
+            crawl = DouBan.DouBan().GetData()
+            print(crawl)
+            data_base.UploadData(crawl, table_name)
+            return render.novel(data)
+        elif (input.submit == "分析结果"):
+            print("停止")
+        else:
+            data = data_base.DownloadData(table_name)
+            print(data)
+            return render.douban(data)
+
+
+class novel:
     def GET(self):
-        return render.nv()
+        return render.novel()
         pass
+
+    def POST(self):
+        table_name = 'nv'
+        data=[]
+        input = web.input()
+        print(input)
+        if (input.submit=="开始爬取"):
+            crawl = novel.novel().get_data()
+            print(crawl)
+            data_base.UploadData(crawl, table_name)
+            return render.novel(data)
+        elif (input.submit=="分析结果"):
+            print("停止")
+        else:
+            data=data_base.DownloadData(table_name)
+            print(data)
+            return render.novel(data)
 
 class jd:
     def GET(self):
@@ -112,9 +150,53 @@ class jd:
             print(data)
             return render.jd(data)
 
+class music:
+    def GET(self):
+        data=[]
+        return render.music(data)
+        pass
+
+    def POST(self):
+        table_name = 'music'
+        data=[]
+        input = web.input()
+        print(input)
+        if (input.submit=="开始爬取"):
+            crawl = song.Music().get_data(input.search)
+            print(crawl)
+            data_base.UploadData(crawl, table_name)
+            return render.music(data)
+        elif (input.submit=="分析结果"):
+            print("停止")
+        else:
+            data=data_base.DownloadData(table_name)
+            print(data)
+            return render.music(data)
 
 
 
+class maoyan:
+    def GET(self):
+        data=[]
+        return render.maoyan(data)
+        pass
+
+    def POST(self):
+        table_name = 'my'
+        data=[]
+        input = web.input()
+        print(input)
+        if (input.submit=="开始爬取"):
+            crawl = maoyan.maoyan().get_data()
+            print(crawl)
+            data_base.UploadData(crawl, table_name)
+            return render.maoyan(data)
+        elif (input.submit=="分析结果"):
+            print("停止")
+        else:
+            data=data_base.DownloadData(table_name)
+            print(data)
+            return render.maoyan(data)
 # 2.2跳转到新增页面
 # class toAddUser:
 #
