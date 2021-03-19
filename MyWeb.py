@@ -6,6 +6,7 @@
 
 import web
 from SQL import *
+from crawler import*
 # 通过render方法渲染，先找到templates的文件夹
 
 
@@ -33,14 +34,14 @@ urls = (
 
 )
 app = web.application(urls, globals())
-
+data_base = ConnectSQL.Database()
 
 # 1.登录功能
 class login:
 
     # 注意此处得GET要全大写和底下POST一样
     def GET(self):
-        flag = False
+        flag = True
         # 向服务器发起请求，是否存在login，存在即返回
         return render.login(flag)
         pass
@@ -52,7 +53,7 @@ class login:
         print(loginUser)
         # print("用户名：", loginUser.username, ",密码:", loginUser.password)
         print(loginUser.keys())
-        data_base = ConnectSQL.Database()
+
         if loginUser.submit=='注册':
             print("注册")
             data_base.Register(loginUser.new_username,loginUser.new_password)
@@ -74,7 +75,6 @@ class login:
     pass
 
 class home_page:
-
     def GET(self):
         return render.showUser()
         pass
@@ -91,8 +91,30 @@ class nv:
 
 class jd:
     def GET(self):
-        return render.jd()
+        data=[]
+        return render.jd(data)
         pass
+
+    def POST(self):
+        table_name = 'jd'
+        data=[]
+        input = web.input()
+        print(input)
+        if (input.submit=="开始爬取"):
+            crawl = JD.JD().get_data(input.search)
+            print(crawl)
+            data_base.UploadData(crawl, table_name)
+            return render.jd(data)
+        elif (input.submit=="分析结果"):
+            print("停止")
+        else:
+            data=data_base.DownloadData(table_name)
+            print(data)
+            return render.jd(data)
+
+
+
+
 # 2.2跳转到新增页面
 # class toAddUser:
 #

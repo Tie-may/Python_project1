@@ -46,7 +46,7 @@ class JD():
             good_price.append(good.find_element_by_css_selector('.p-price i').text)
             # 获取评论
             good_commit.append(good.find_element_by_css_selector('.p-commit a').text)
-        return pd.DataFrame({'good_name':good_name,'good_price':good_price,'good_commit':good_price,'good_line':good_link})
+        return pd.DataFrame({'good_name':good_name,'good_price':good_price,'good_commit':good_commit,'good_line':good_link})
         # # 抓取大量数据
         # button = driver.find_element_by_partial_link_text("下一页")
         # # 点击加载

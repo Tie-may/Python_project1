@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+$def with (data)
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,13 +42,13 @@
         <div class="row">
             <div class="col-0 col-md-3"></div>
             <div class="col-12 col-md-6 align-middle">
-                <form class="form-inline">
-                    <input class="form-control rounded-0 flex-grow-1" type="text" placeholder="Search">
+                <form method="post" class="form-inline">
+                    <input class="form-control rounded-0 flex-grow-1" name="search" value="search" type="text" placeholder="Search">
                     <div class="btn-group">
-                        <button class="btn btn-success rounded-0" type="button">开始爬取</button>
-                        <button type="button" class="btn btn-danger">停止爬取</button>
-                        <button type="button" class="btn btn-primary rounded-0">分析结果</button>
-                    </div>
+                        <input type="submit" class="btn btn-success rounded-0" name="submit" value="开始爬取">
+                        <input type="submit" class="btn btn-danger" name="submit" value="展示结果">
+                        <input type="submit" class="btn btn-primary rounded-0" name="submit" value="分析结果">
+                    </div>1
                 </form>
             </div>
             <div class="col-0 col-md-3"></div>
@@ -56,5 +56,19 @@
     </div>
 </section>
 <!--搜索框结束-->
+
+<!--爬虫展示开始-->
+<section>
+    $for d in data
+    <table>
+        <tr>
+            <td>$d[0]</td>
+            <td>$d[1]</td>
+            <td>$d[2]</td>
+            <td>$d[3]</td>
+        </tr>
+    </table>
+</section>
+<!--爬虫展示结束-->
 </body>
 </html>
