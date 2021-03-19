@@ -15,9 +15,11 @@ $def with (flag)
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <script src="../static/js/jquery-3.5.1.min.js"></script>
     <script src="../static/js/bootstrap.bundle.min.js"></script>
-    <script src="//at.alicdn.com/t/font_2426304_5n2uvqgef0u.js"></script>
+    <!--svg字体引入-->
+    <script src="//at.alicdn.com/t/font_2426304_ac59ubzg4f.js"></script>
+    <script src="../static/js/login.js"></script>
 </head>
-<body style="background: url('../static/imgs/img.png')">
+<body data-flag=${flag} style="background: url('../static/imgs/img.png')">
 
 <!--导航栏开始-->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark px-5">
@@ -65,16 +67,19 @@ $def with (flag)
         <div class="col-1 col-md-3"></div>
         <!--        登陆入口-->
         <div class="col-10 col-md-6 px-5 border border-1 rounded-lg" style="background-color: rgba(111,146,184,0.1)">
-            <div class="w-100 h-100" style="padding-top:70px">
+            <div class="w-100 h-100 pt-5">
                 <form method="post" action="login">
                     <div class="form-group">
                         <label for="username">用户名:</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名">
+                        <input type="text" class="form-control entering" id="username" name="username"
+                               placeholder="请输入用户名">
                     </div>
                     <div class="form-group">
                         <label for="password">密码:</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                        <input type="password" class="form-control entering" id="password" name="password"
+                               placeholder="请输入密码">
                     </div>
+                    <div id="error_psw01" class="w-100 mb-3" style="color:red;height: 20px;line-height: 20px;"></div>
                     <div class="w-50" style="margin: 0 auto">
                         <input type="submit" id="submit" name="submit" class="btn btn-primary btn-block" value="登陆">
                     </div>
@@ -82,7 +87,6 @@ $def with (flag)
                         <a href="#" class="text-primary" data-toggle="modal" data-target="#myModal_password">修改密码</a>
                         <a href="#" class="text-primary ml-auto" data-toggle="modal" data-target="#myModal_register">还未有账号，点我注册</a>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -106,16 +110,20 @@ $def with (flag)
                 <form method="post" action="login">
                     <div class="form-group">
                         <label for="username">用户名:</label>
-                        <input type="text" class="form-control" id="old_username" name="old_username" placeholder="请输入用户名">
+                        <input type="text" class="form-control entering" id="old_username" name="old_username"
+                               placeholder="请输入用户名">
                     </div>
                     <div class="form-group">
                         <label for="password">旧密码:</label>
-                        <input type="password" class="form-control" id="old_password" name="old_password" placeholder="请输入旧密码">
+                        <input type="password" class="form-control entering" id="old_password" name="old_password"
+                               placeholder="请输入旧密码">
                     </div>
                     <div class="form-group">
                         <label for="password">新密码:</label>
-                        <input type="password" class="form-control" id="modified_password" name="modified_password" placeholder="请输入新密码">
+                        <input type="password" class="form-control entering" id="modified_password"
+                               name="modified_password" placeholder="请输入新密码">
                     </div>
+                    <div id="error_psw02" class="w-100 mb-3" style="color:red;height: 20px;line-height: 20px;"></div>
                     <input type="submit" id="btn_modify" name="submit" value="修改" class="btn btn-primary btn-block">
                 </form>
             </div>
@@ -139,11 +147,13 @@ $def with (flag)
                 <form method="post" action="login">
                     <div class="form-group">
                         <label for="username">用户名:</label>
-                        <input type="text" class="form-control" id="new_username" name="new_username" placeholder="请输入用户名">
+                        <input type="text" class="form-control" id="new_username" name="new_username"
+                               placeholder="请输入用户名">
                     </div>
                     <div class="form-group">
                         <label for="password">密码:</label>
-                        <input type="password" class="form-control" id="new_password" name="new_password" placeholder="请输入密码">
+                        <input type="password" class="form-control" id="new_password" name="new_password"
+                               placeholder="请输入密码">
                     </div>
                     <input type="submit" id="register" name="submit" value="注册" class="btn btn-primary btn-block">
                 </form>
